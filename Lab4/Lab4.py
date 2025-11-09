@@ -237,6 +237,39 @@ def apply_bayes_theorem(prior, sensitivity, specificity):
     posterior = numerator / denominator
     print(f"Posterior probability [Bayes] = {posterior:.4f}")
     return posterior
+"""
+def bayes_tree_plot(prior, sensitivity, specificity):
+    
+    Calculate posterior probability and visualize as a probability tree diagram.
+    prior: base rate (P(Damage))
+    sensitivity: P(Test+ | Damage)
+    specificity: P(Test- | No Damage)
+
+    # Posterior hesapla
+    posterior = apply_bayes_theorem(prior, sensitivity, specificity)
+
+    # Tree diagram çizimi
+    import matplotlib.pyplot as plt
+
+    fig, ax = plt.subplots(figsize=(8,6))
+    ax.axis('off')  # axes gizle
+
+    # Tree textlerini ekle
+    ax.text(0.1, 0.9, f'Damage (D) {prior*100:.1f}%', fontsize=12)
+    ax.text(0.1, 0.7, f'No Damage (~D) {(1-prior)*100:.1f}%', fontsize=12)
+
+    # Sensitivity & 1-specificity
+    ax.text(0.4, 0.95, f'Test+ | D {sensitivity*100:.1f}%', fontsize=12)
+    ax.text(0.4, 0.85, f'Test- | D {(1-sensitivity)*100:.1f}%', fontsize=12)
+    ax.text(0.4, 0.75, f'Test+ | ~D {(1-specificity)*100:.1f}%', fontsize=12)
+    ax.text(0.4, 0.65, f'Test- | ~D {specificity*100:.1f}%', fontsize=12)
+
+    # Posterior sonucu
+    ax.text(0.7, 0.9, f'P(D | Test+) = {posterior*100:.2f}%', fontsize=12, color='red')
+
+    plt.title('Bayes Theorem Probability Tree')
+    plt.savefig('bayes_tree.png', dpi=300, bbox_inches='tight')
+    plt.show()"""
 
 # -------------------------------
 # Report File
@@ -253,9 +286,9 @@ def create_statistical_report(mean,std,q1,q2,q3,file='lab4_statistical_report.tx
 # Main Execution
 # -------------------------------
 def main():
-    concrete_data = load_data(r"C:\Users\Berat Koncuk\OneDrive - Arup\Masaüstü\GitHub\CE49X_Fall2025_Koncuk_Berat\Lab04\datasets\concrete_strength.csv")
-    materials = load_data(r"C:\Users\Berat Koncuk\OneDrive - Arup\Masaüstü\GitHub\CE49X_Fall2025_Koncuk_Berat\Lab04\datasets\material_properties.csv")
-    loads = load_data(r"C:\Users\Berat Koncuk\OneDrive - Arup\Masaüstü\GitHub\CE49X_Fall2025_Koncuk_Berat\Lab04\datasets\structural_loads.csv")
+    concrete_data = load_data(r"C:\Users\Berat Koncuk\OneDrive - Arup\Masaüstü\GitHub\CE49X_Fall2025_Koncuk_Berat\Lab4\datasets\concrete_strength.csv")
+    materials = load_data(r"C:\Users\Berat Koncuk\OneDrive - Arup\Masaüstü\GitHub\CE49X_Fall2025_Koncuk_Berat\Lab4\datasets\material_properties.csv")
+    loads = load_data(r"C:\Users\Berat Koncuk\OneDrive - Arup\Masaüstü\GitHub\CE49X_Fall2025_Koncuk_Berat\Lab4\datasets\structural_loads.csv")
 
     # Concrete Analysis
     mean, std, q1, q2, q3 = calculate_descriptive_stats(concrete_data, 'strength_mpa') # Calculates descriptive statistics for 'strength_mpa' column in concrete_data
