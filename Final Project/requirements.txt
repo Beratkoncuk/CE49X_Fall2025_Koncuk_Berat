@@ -1,0 +1,13 @@
+pandas
+numpy
+selenium
+beautifulsoup4
+sqlalchemy
+psycopg2-binary
+openpyxl
+scikit-learn
+matplotlib
+seaborn
+wordcloud
+webdriver-manager
+requests
